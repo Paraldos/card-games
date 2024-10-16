@@ -1,9 +1,9 @@
+// (B)ackground (C)lubs, (D)iamonds, (H)earts, (S)pades
+
 class Preload {
   constructor() {
     this.init();
   }
-
-  // (B)ackground (C)lubs, (D)iamonds, (H)earts, (S)pades
 
   async init() {
     await Promise.all(
@@ -75,9 +75,9 @@ class Preload {
       [this.prepSvg("/assets/poker-qr/AH.svg", "AH")],
       [this.prepSvg("/assets/poker-qr/AS.svg", "AS")]
     );
-    // await this.wait(1000);
-    document.body.dispatchEvent(new Event("svgsLoaded"));
+    await this.wait(100);
     console.log("SVGs loaded");
+    document.body.dispatchEvent(new Event("svgsLoaded"));
   }
 
   async prepSvg(path, key) {

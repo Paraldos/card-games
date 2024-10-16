@@ -19,6 +19,12 @@
     transform: rotate(360deg);
   }
 }
+.stock {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+}
+
 *,
 *::before,
 *::after {
