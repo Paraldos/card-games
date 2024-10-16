@@ -1,0 +1,12 @@
+{
+  "name": "Card Games",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "sass --watch ./styles/__include.scss ./styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
