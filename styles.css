@@ -26,7 +26,6 @@
   grid-gap: 10px;
   margin: 0 auto;
   width: 800px;
-  height: 400px;
 }
 .game-board__stock {
   background-color: red;
@@ -58,6 +57,7 @@
 }
 
 body {
+  min-height: 100vh;
   background-color: grey;
 }
 
