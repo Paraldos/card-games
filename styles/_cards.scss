@@ -1,0 +1,13 @@
+.card {
+  width: 100%;
+  height: fit-content;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+
+  &__placeholder {
+    opacity: 0.2;
+  }
+}

@@ -4,29 +4,25 @@
   grid-template-rows: repeat(2, 1fr);
   grid-gap: 10px;
   margin: 0 auto;
-  width: 800px;
+  width: min(100%, 900px);
+
+  &__card-field {
+    width: 100%;
+    height: fit-content;
+    padding: 3px 5px 0 5px;
+    border: 1px solid yellow;
+    border-radius: 7px;
+  }
 
   &__stock {
-    background-color: red;
-    width: 100px;
-    height: 100px;
   }
 
   &__waste {
-    background-color: blue;
-    width: 100px;
-    height: 100px;
   }
 
   &__foundation {
-    background-color: green;
-    width: 100px;
-    height: 100px;
   }
 
   &__tableau {
-    background-color: yellow;
-    width: 100px;
-    height: 100px;
   }
 }

@@ -1,3 +1,4 @@
+// (B)ackground (C)lubs, (D)iamonds, (H)earts, (S)pades
 import PlayingCard from "./playingCard.js";
 
 export default class PlayingCards {

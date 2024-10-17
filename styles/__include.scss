@@ -1,5 +1,6 @@
 @import "./loader.scss";
 @import "./gameBoard.scss";
+@import "./cards.scss";
 
 *,
 *::before,
@@ -12,4 +13,5 @@
 body {
   min-height: 100vh;
   background-color: grey;
+  padding: 20px;
 }

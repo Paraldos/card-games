@@ -1,11 +1,15 @@
+// (B)ackground (C)lubs, (D)iamonds, (H)earts, (S)pades
 import preload from "./preload.js";
 
 export default class PlayingCard {
-  constructor(suit, rank) {
-    this.suit = suit;
-    this.rank = rank;
+  constructor(name, classes = []) {
+    this.suit = name[0];
+    this.rank = name[1];
     this.card = document.createElement("div");
     this.card.className = "card";
-    this.card.appendChild(preload.getSVG(`${suit}${rank}`));
+    classes.forEach((className) =>
+      this.card.classList.add("card__" + className)
+    );
+    this.card.appendChild(preload.getSVG(`${name}`));
   }
 }

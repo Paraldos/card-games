@@ -1,4 +1,5 @@
 import PlayingCards from "./playingCards.js";
+import PlayingCard from "./playingCard.js";
 
 export default class GameBoard {
   constructor() {
@@ -35,6 +36,8 @@ export default class GameBoard {
   addStock() {
     const stock = document.createElement("div");
     stock.classList.add("game-board__stock");
+    stock.classList.add("game-board__card-field");
+    stock.appendChild(this.getPlaceholder());
     this.container.appendChild(stock);
     return stock;
   }
@@ -42,6 +45,8 @@ export default class GameBoard {
   addWaste() {
     const waste = document.createElement("div");
     waste.classList.add("game-board__waste");
+    waste.classList.add("game-board__card-field");
+    waste.appendChild(this.getPlaceholder());
     this.container.appendChild(waste);
     return waste;
   }
@@ -49,6 +54,8 @@ export default class GameBoard {
   addFoundation() {
     const foundation = document.createElement("div");
     foundation.classList.add("game-board__foundation");
+    foundation.classList.add("game-board__card-field");
+    foundation.appendChild(this.getPlaceholder());
     this.container.appendChild(foundation);
     return foundation;
   }
@@ -56,7 +63,13 @@ export default class GameBoard {
   addTableau() {
     const tableau = document.createElement("div");
     tableau.classList.add("game-board__tableau");
+    tableau.classList.add("game-board__card-field");
+    tableau.appendChild(this.getPlaceholder());
     this.container.appendChild(tableau);
     return tableau;
+  }
+
+  getPlaceholder() {
+    return new PlayingCard("2B", ["placeholder"]).card;
   }
 }

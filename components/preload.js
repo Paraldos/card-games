@@ -1,5 +1,3 @@
-// (B)ackground (C)lubs, (D)iamonds, (H)earts, (S)pades
-
 class Preload {
   constructor() {
     this.init();
