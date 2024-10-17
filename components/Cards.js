@@ -1,7 +1,7 @@
 // (B)ackground (C)lubs, (D)iamonds, (H)earts, (S)pades
 import PlayingCard from "./playingCard.js";
 
-export default class PlayingCards {
+export default class Cards {
   constructor() {
     this.listOfCards = [
       "AS",
@@ -57,7 +57,6 @@ export default class PlayingCards {
       "QD",
       "KD",
     ];
-    this.cards = this.getCards();
   }
 
   getCards() {

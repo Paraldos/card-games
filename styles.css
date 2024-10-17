@@ -35,40 +35,40 @@
   border-radius: 7px;
   position: relative;
 }
-.game-board__tableau .card {
+.game-board__tableau .card:not(.card__placeholder) {
   position: absolute;
   top: 0;
   left: 0;
 }
-.game-board__tableau .card:nth-child(1) {
+.game-board__tableau .card:not(.card__placeholder):nth-child(1) {
+  top: -20px;
+}
+.game-board__tableau .card:not(.card__placeholder):nth-child(2) {
   top: 0px;
 }
-.game-board__tableau .card:nth-child(2) {
+.game-board__tableau .card:not(.card__placeholder):nth-child(3) {
   top: 20px;
 }
-.game-board__tableau .card:nth-child(3) {
+.game-board__tableau .card:not(.card__placeholder):nth-child(4) {
   top: 40px;
 }
-.game-board__tableau .card:nth-child(4) {
+.game-board__tableau .card:not(.card__placeholder):nth-child(5) {
   top: 60px;
 }
-.game-board__tableau .card:nth-child(5) {
+.game-board__tableau .card:not(.card__placeholder):nth-child(6) {
   top: 80px;
 }
-.game-board__tableau .card:nth-child(6) {
+.game-board__tableau .card:not(.card__placeholder):nth-child(7) {
   top: 100px;
 }
-.game-board__tableau .card:nth-child(7) {
+.game-board__tableau .card:not(.card__placeholder):nth-child(8) {
   top: 120px;
 }
-.game-board__tableau .card:nth-child(8) {
+.game-board__tableau .card:not(.card__placeholder):nth-child(9) {
   top: 140px;
 }
-.game-board__tableau .card:nth-child(9) {
+.game-board__tableau .card:not(.card__placeholder):nth-child(10) {
   top: 160px;
-}
-.game-board__tableau .card:nth-child(10) {
-  top: 180px;
 }
 
 .card {
@@ -91,7 +91,7 @@
   transform: rotateY(180deg);
 }
 .card__placeholder svg {
-  opacity: 0.4;
+  opacity: 0.2;
 }
 
 *,
