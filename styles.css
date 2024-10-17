@@ -55,6 +55,10 @@
 .card svg:last-child {
   transform: rotateY(180deg);
 }
+.card__placeholder svg {
+  opacity: 0.4;
+}
+
 *,
 *::before,
 *::after {

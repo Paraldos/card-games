@@ -69,6 +69,6 @@ export default class GameBoard {
   }
 
   getPlaceholder() {
-    return new PlayingCard("KC", ["placeholder"]).card;
+    return new PlayingCard("AC", ["placeholder"], false, false).card;
   }
 }

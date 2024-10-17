@@ -2,9 +2,11 @@
 import preload from "./preload.js";
 
 export default class PlayingCard {
-  constructor(name, extraClasses = []) {
+  constructor(name, extraClasses = [], clikable = true, allowUnFlip = false) {
     this.suit = name[0];
     this.rank = name[1];
+    this.clikable = clikable;
+    this.allowUnFlip = allowUnFlip;
     this.card = this.createCard(name, extraClasses);
     this.card.addEventListener("click", () => {
       this.onClick();
@@ -23,7 +25,13 @@ export default class PlayingCard {
   }
 
   onClick() {
-    console.log("clicked");
-    this.card.classList.toggle("card__flipped");
+    if (!this.clikable) return;
+    if (this.card.classList.contains("card__flipped")) {
+      if (this.allowUnFlip) {
+        this.card.classList.remove("card__flipped");
+      }
+    } else {
+      this.card.classList.add("card__flipped");
+    }
   }
 }
