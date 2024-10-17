@@ -9,9 +9,9 @@ export default class GameBoard {
     this.foundation = document.querySelectorAll(".game-board__foundation");
     this.tableau = document.querySelectorAll(".game-board__tableau");
     this.Cards = new Cards().getCards();
-
     this.addPlaceholders();
     this.fillTableus();
+    this.fillStock();
   }
 
   // placeholders
@@ -40,9 +40,19 @@ export default class GameBoard {
         const card = this.Cards.pop();
         if (i == index) {
           card.flippCard(true);
+        } else {
+          card.clikable = false;
         }
         tableau.appendChild(card.card);
       }
+    });
+  }
+
+  // stock
+  fillStock() {
+    this.Cards.forEach((card) => {
+      card.flippCard(false);
+      this.stock.appendChild(card.card);
     });
   }
 }

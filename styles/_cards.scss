@@ -1,12 +1,15 @@
 .card {
+  --scale: 0.95;
+
   position: relative;
   width: 100%;
   aspect-ratio: 2.5/3.5;
   transform-style: preserve-3d;
-  transition: all 0.5s ease;
+  transition: transform 0.5s ease;
+  transform: scale(var(--scale));
 
   &__flipped {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) scale(var(--scale));
   }
 
   svg {

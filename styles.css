@@ -30,10 +30,14 @@
 .game-board__card-field {
   width: 100%;
   height: fit-content;
-  padding: 3px;
   border: 1px solid yellow;
   border-radius: 7px;
   position: relative;
+}
+.game-board__stock .card:not(.card__placeholder) {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .game-board__tableau .card:not(.card__placeholder) {
   position: absolute;
@@ -72,14 +76,16 @@
 }
 
 .card {
+  --scale: 0.95;
   position: relative;
   width: 100%;
   aspect-ratio: 2.5/3.5;
   transform-style: preserve-3d;
-  transition: all 0.5s ease;
+  transition: transform 0.5s ease;
+  transform: scale(var(--scale));
 }
 .card__flipped {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) scale(var(--scale));
 }
 .card svg {
   position: absolute;

@@ -9,13 +9,17 @@
   &__card-field {
     width: 100%;
     height: fit-content;
-    padding: 3px;
     border: 1px solid yellow;
     border-radius: 7px;
     position: relative;
   }
 
   &__stock {
+    .card:not(.card__placeholder) {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 
   &__waste {
