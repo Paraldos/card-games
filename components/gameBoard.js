@@ -23,7 +23,6 @@ export default class GameBoard {
       this.addTableau(),
     ];
     this.playingCards = new PlayingCards();
-    console.log(this.playingCards.cards);
   }
 
   addContainer() {
@@ -70,6 +69,6 @@ export default class GameBoard {
   }
 
   getPlaceholder() {
-    return new PlayingCard("2B", ["placeholder"]).card;
+    return new PlayingCard("KC", ["placeholder"]).card;
   }
 }

@@ -26,26 +26,35 @@
   grid-gap: 10px;
   margin: 0 auto;
   width: min(100%, 900px);
+  perspective: 1000px;
 }
 .game-board__card-field {
   width: 100%;
   height: fit-content;
-  padding: 3px 5px 0 5px;
+  padding: 3px;
   border: 1px solid yellow;
   border-radius: 7px;
+  position: relative;
 }
 .card {
+  position: relative;
   width: 100%;
-  height: fit-content;
+  aspect-ratio: 2.5/3.5;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+}
+.card__flipped {
+  transform: rotateY(180deg);
 }
 .card svg {
+  position: absolute;
   width: 100%;
-  height: auto;
+  height: 100%;
+  backface-visibility: hidden;
 }
-.card__placeholder {
-  opacity: 0.2;
+.card svg:last-child {
+  transform: rotateY(180deg);
 }
-
 *,
 *::before,
 *::after {

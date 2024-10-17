@@ -63,7 +63,7 @@ export default class PlayingCards {
   getCards() {
     let array = [];
     this.listOfCards.forEach((card) => {
-      array.push(new PlayingCard(card[0], card[1]));
+      array.push(new PlayingCard(card));
     });
     return array;
   }
