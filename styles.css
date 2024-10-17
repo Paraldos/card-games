@@ -19,8 +19,32 @@
     transform: rotate(360deg);
   }
 }
-.stock {
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 10px;
+  margin: 0 auto;
+  width: 800px;
+  height: 400px;
+}
+.game-container__stock {
   background-color: red;
+  width: 100px;
+  height: 100px;
+}
+.game-container__waste {
+  background-color: blue;
+  width: 100px;
+  height: 100px;
+}
+.game-container__foundation {
+  background-color: green;
+  width: 100px;
+  height: 100px;
+}
+.game-container__tableau {
+  background-color: yellow;
   width: 100px;
   height: 100px;
 }
