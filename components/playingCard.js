@@ -2,11 +2,18 @@
 import preload from "./preload.js";
 
 export default class PlayingCard {
-  constructor(name, extraClasses = [], clikable = true, allowUnFlip = false) {
+  constructor(
+    name,
+    cardFlipped = false,
+    extraClasses = [],
+    clikable = true,
+    allowUnFlip = false
+  ) {
     this.suit = name[0];
     this.rank = name[1];
     this.clikable = clikable;
     this.allowUnFlip = allowUnFlip;
+    this.cardFlipped = cardFlipped;
     this.card = this.createCard(name, extraClasses);
     this.card.addEventListener("click", () => {
       this.onClick();
@@ -19,6 +26,9 @@ export default class PlayingCard {
     extraClasses.forEach((className) =>
       card.classList.add("card__" + className)
     );
+    if (this.cardFlipped) {
+      card.classList.add("card__flipped");
+    }
     card.appendChild(preload.getSVG(`${"2B"}`));
     card.appendChild(preload.getSVG(`${name}`));
     return card;

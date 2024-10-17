@@ -22,7 +22,8 @@ export default class GameBoard {
       this.addTableau(),
       this.addTableau(),
     ];
-    this.playingCards = new PlayingCards();
+    this.playingCards = new PlayingCards().getCards();
+    this.fillTableus();
   }
 
   addContainer() {
@@ -68,7 +69,19 @@ export default class GameBoard {
     return tableau;
   }
 
+  fillTableus() {
+    this.tableau.forEach((tableau, index) => {
+      for (let i = 0; i < index + 1; i++) {
+        const card = this.playingCards.pop();
+        if (i == index) {
+          card.card.classList.add("card__flipped");
+        }
+        tableau.appendChild(card.card);
+      }
+    });
+  }
+
   getPlaceholder() {
-    return new PlayingCard("AC", ["placeholder"], false, false).card;
+    return new PlayingCard("AC", false, ["placeholder"], false, false).card;
   }
 }

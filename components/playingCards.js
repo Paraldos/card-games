@@ -65,6 +65,15 @@ export default class PlayingCards {
     this.listOfCards.forEach((card) => {
       array.push(new PlayingCard(card));
     });
+    array = this.shuffleArray(array);
+    return array;
+  }
+
+  shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
     return array;
   }
 }
