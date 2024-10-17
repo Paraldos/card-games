@@ -14,6 +14,7 @@ export default class GameBoard {
     this.fillTableus();
   }
 
+  // placeholders
   addPlaceholders() {
     this.stock.appendChild(this.getPlaceholder());
     this.waste.appendChild(this.getPlaceholder());
@@ -25,6 +26,14 @@ export default class GameBoard {
     });
   }
 
+  getPlaceholder() {
+    const card = new PlayingCard("AC");
+    card.card.classList.add("card__placeholder");
+    card.clikable = false;
+    return card.card;
+  }
+
+  // tableus
   fillTableus() {
     this.tableau.forEach((tableau, index) => {
       for (let i = 0; i < index + 1; i++) {
@@ -35,12 +44,5 @@ export default class GameBoard {
         tableau.appendChild(card.card);
       }
     });
-  }
-
-  getPlaceholder() {
-    const card = new PlayingCard("AC");
-    card.card.classList.add("card__placeholder");
-    card.clikable = false;
-    return card.card;
   }
 }
