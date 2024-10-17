@@ -25,5 +25,16 @@
   }
 
   &__tableau {
+    .card {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          top: #{($i - 1) * 20}px;
+        }
+      }
+    }
   }
 }
