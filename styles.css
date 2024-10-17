@@ -19,7 +19,7 @@
     transform: rotate(360deg);
   }
 }
-.game-container {
+.game-board {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -28,22 +28,22 @@
   width: 800px;
   height: 400px;
 }
-.game-container__stock {
+.game-board__stock {
   background-color: red;
   width: 100px;
   height: 100px;
 }
-.game-container__waste {
+.game-board__waste {
   background-color: blue;
   width: 100px;
   height: 100px;
 }
-.game-container__foundation {
+.game-board__foundation {
   background-color: green;
   width: 100px;
   height: 100px;
 }
-.game-container__tableau {
+.game-board__tableau {
   background-color: yellow;
   width: 100px;
   height: 100px;

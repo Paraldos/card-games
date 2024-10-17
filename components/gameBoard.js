@@ -1,6 +1,6 @@
-import PlayingCards from "../playingCards.js";
+import PlayingCards from "./playingCards.js";
 
-export default class Solitaire {
+export default class GameBoard {
   constructor() {
     this.container = this.addContainer();
     this.stock = this.addStock();
@@ -27,35 +27,35 @@ export default class Solitaire {
 
   addContainer() {
     const container = document.createElement("div");
-    container.classList.add("game-container");
+    container.classList.add("game-board");
     document.body.appendChild(container);
     return container;
   }
 
   addStock() {
     const stock = document.createElement("div");
-    stock.classList.add("game-container__stock");
+    stock.classList.add("game-board__stock");
     this.container.appendChild(stock);
     return stock;
   }
 
   addWaste() {
     const waste = document.createElement("div");
-    waste.classList.add("game-container__waste");
+    waste.classList.add("game-board__waste");
     this.container.appendChild(waste);
     return waste;
   }
 
   addFoundation() {
     const foundation = document.createElement("div");
-    foundation.classList.add("game-container__foundation");
+    foundation.classList.add("game-board__foundation");
     this.container.appendChild(foundation);
     return foundation;
   }
 
   addTableau() {
     const tableau = document.createElement("div");
-    tableau.classList.add("game-container__tableau");
+    tableau.classList.add("game-board__tableau");
     this.container.appendChild(tableau);
     return tableau;
   }
