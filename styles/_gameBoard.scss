@@ -14,6 +14,7 @@
     position: relative;
   }
 
+  &__waste,
   &__stock {
     .card:not(.card__placeholder) {
       position: absolute;

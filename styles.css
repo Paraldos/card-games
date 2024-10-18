@@ -34,7 +34,7 @@
   border-radius: 7px;
   position: relative;
 }
-.game-board__stock .card:not(.card__placeholder) {
+.game-board__waste .card:not(.card__placeholder), .game-board__stock .card:not(.card__placeholder) {
   position: absolute;
   top: 0;
   left: 0;
@@ -121,6 +121,10 @@ body {
   min-height: 100vh;
   background-color: grey;
   padding: 20px;
+}
+
+.hidden {
+  display: none;
 }
 
 /*# sourceMappingURL=styles.css.map */

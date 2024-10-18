@@ -10,6 +10,8 @@ export default class Card {
     this.card = this.createCard(name);
     this.startX = 0;
     this.startY = 0;
+    this.waste = document.querySelector(".game-board__waste");
+    this.placeholder = false;
     // events
     this.card.addEventListener("click", () => this.onClick());
     this.card.addEventListener("mousedown", (event) => this.onMouseDown(event));
@@ -26,9 +28,22 @@ export default class Card {
     return card;
   }
 
+  isInStock() {
+    return this.card.parentNode.classList.contains("game-board__stock");
+  }
+
   onClick() {
     if (!this.clikable) return;
-    if (!this.flipped) {
+    if (this.isInStock()) {
+      this.onClickOnStock();
+    }
+  }
+
+  onClickOnStock() {
+    if (this.placeholder) {
+      document.body.dispatchEvent(new Event("resetStock"));
+    } else {
+      this.waste.appendChild(this.card);
       this.flippCard(true);
     }
   }
@@ -59,7 +74,6 @@ export default class Card {
     this.card.style.setProperty("--transformX", `0px`);
     this.card.style.setProperty("--transformY", `0px`);
     this.card.style.zIndex = 0;
-
     document.removeEventListener("mousemove", this.onMouseMoveBound);
     document.removeEventListener("mouseup", this.onMouseUpBound);
   }

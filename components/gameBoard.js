@@ -12,6 +12,7 @@ export default class GameBoard {
     this.addPlaceholders();
     this.fillTableus();
     this.fillStock();
+    document.body.addEventListener("resetStock", () => this.resetStock());
   }
 
   // placeholders
@@ -29,7 +30,7 @@ export default class GameBoard {
   getPlaceholder() {
     const card = new Card("AC");
     card.card.classList.add("card__placeholder");
-    card.clikable = false;
+    card.placeholder = true;
     return card.card;
   }
 
@@ -53,6 +54,13 @@ export default class GameBoard {
     this.Cards.forEach((card) => {
       card.flippCard(false);
       this.stock.appendChild(card.card);
+    });
+  }
+
+  resetStock() {
+    const wasteCards = this.waste.querySelectorAll(".card");
+    wasteCards.forEach((card) => {
+      this.stock.appendChild(card);
     });
   }
 }
