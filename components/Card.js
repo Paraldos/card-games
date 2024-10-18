@@ -66,6 +66,7 @@ export default class Card {
     this.card.style.zIndex = 1000;
     this.card.style.setProperty("--transformX", `${newX}px`);
     this.card.style.setProperty("--transformY", `${newY}px`);
+    this.checkForOverlap();
   }
 
   onMouseUp() {
@@ -74,5 +75,18 @@ export default class Card {
     this.card.style.zIndex = 0;
     document.removeEventListener("mousemove", this.onMouseMoveBound);
     document.removeEventListener("mouseup", this.onMouseUpBound);
+  }
+
+  checkForOverlap() {
+    const card = this.card.getBoundingClientRect();
+    const waste = this.waste.getBoundingClientRect();
+    if (
+      card.left < waste.right &&
+      card.right > waste.left &&
+      card.top < waste.bottom &&
+      card.bottom > waste.top
+    ) {
+      console.log("Overlap");
+    }
   }
 }
