@@ -6,6 +6,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 2.5/3.5;
+  transition: transform 0.05s ease;
   transform: translate(var(--transformX), var(--transformY));
 
   &__inner {
