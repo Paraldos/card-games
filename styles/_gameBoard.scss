@@ -23,7 +23,9 @@
   }
 
   &__waste,
-  &__stock {
+  &__stock,
+  &__foundation,
+  &__tableau {
     .card:not(.card__placeholder) {
       position: absolute;
       top: 0;
@@ -33,10 +35,6 @@
 
   &__tableau {
     .card:not(.card__placeholder) {
-      position: absolute;
-      top: 0;
-      left: 0;
-
       @for $i from 1 through 10 {
         &:nth-child(#{$i}) {
           top: #{($i - 2) * 20}px;

@@ -40,12 +40,7 @@
 .game-board__negative-overlap {
   border-color: red;
 }
-.game-board__waste .card:not(.card__placeholder), .game-board__stock .card:not(.card__placeholder) {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.game-board__tableau .card:not(.card__placeholder) {
+.game-board__waste .card:not(.card__placeholder), .game-board__stock .card:not(.card__placeholder), .game-board__foundation .card:not(.card__placeholder), .game-board__tableau .card:not(.card__placeholder) {
   position: absolute;
   top: 0;
   left: 0;
