@@ -1,5 +1,6 @@
 // (B)ackground (C)lubs, (D)iamonds, (H)earts, (S)pades
-import PlayingCard from "./playingCard.js";
+import preload from "./preload.js";
+import Card from "./Card.js";
 
 export default class Cards {
   constructor() {
@@ -62,7 +63,7 @@ export default class Cards {
   getCards() {
     let array = [];
     this.listOfCards.forEach((card) => {
-      array.push(new PlayingCard(card));
+      array.push(new Card(card));
     });
     array = this.shuffleArray(array);
     return array;

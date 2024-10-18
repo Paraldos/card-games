@@ -1,5 +1,5 @@
 import Cards from "./Cards.js";
-import PlayingCard from "./playingCard.js";
+import Card from "./Card.js";
 
 export default class GameBoard {
   constructor() {
@@ -27,7 +27,7 @@ export default class GameBoard {
   }
 
   getPlaceholder() {
-    const card = new PlayingCard("AC");
+    const card = new Card("AC");
     card.card.classList.add("card__placeholder");
     card.clikable = false;
     return card.card;

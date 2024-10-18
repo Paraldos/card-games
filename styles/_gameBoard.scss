@@ -9,7 +9,7 @@
   &__card-field {
     width: 100%;
     height: fit-content;
-    border: 1px solid yellow;
+    border: 2px solid yellow;
     border-radius: 7px;
     position: relative;
   }
@@ -20,12 +20,6 @@
       top: 0;
       left: 0;
     }
-  }
-
-  &__waste {
-  }
-
-  &__foundation {
   }
 
   &__tableau {
