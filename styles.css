@@ -34,6 +34,12 @@
   border-radius: 7px;
   position: relative;
 }
+.game-board__positive-overlap {
+  border-color: green;
+}
+.game-board__negative-overlap {
+  border-color: red;
+}
 .game-board__waste .card:not(.card__placeholder), .game-board__stock .card:not(.card__placeholder) {
   position: absolute;
   top: 0;

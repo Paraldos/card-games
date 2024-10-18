@@ -14,6 +14,14 @@
     position: relative;
   }
 
+  &__positive-overlap {
+    border-color: green;
+  }
+
+  &__negative-overlap {
+    border-color: red;
+  }
+
   &__waste,
   &__stock {
     .card:not(.card__placeholder) {

@@ -62,7 +62,7 @@ export default class Card {
     this.card.style.zIndex = 1000;
     this.card.style.setProperty("--transformX", `${newX}px`);
     this.card.style.setProperty("--transformY", `${newY}px`);
-    this.checkForOverlap();
+    this.checkForFoundationOverlap();
   }
 
   onMouseUp() {
@@ -71,6 +71,7 @@ export default class Card {
     this.card.style.zIndex = 0;
     document.removeEventListener("mousemove", this.onMouseMoveBound);
     document.removeEventListener("mouseup", this.onMouseUpBound);
+    document.body.dispatchEvent(new Event("resetOverlapIndication"));
   }
 
   // heper
@@ -86,16 +87,38 @@ export default class Card {
     this.card.classList.toggle("card__flipped", faceIsUp);
   }
 
-  checkForOverlap() {
-    const card = this.card.getBoundingClientRect();
-    const waste = this.waste.getBoundingClientRect();
-    if (
-      card.left < waste.right &&
-      card.right > waste.left &&
-      card.top < waste.bottom &&
-      card.bottom > waste.top
-    ) {
-      console.log("Overlap");
+  checkForFoundationOverlap() {
+    document.body.dispatchEvent(new Event("resetOverlapIndication"));
+    const cardRect = this.card.getBoundingClientRect();
+    const foundationElements = document.querySelectorAll(
+      ".game-board__foundation"
+    );
+    let maxOverlapArea = 0;
+    let bestMatchElement = null;
+
+    foundationElements.forEach((element) => {
+      const elementRect = element.getBoundingClientRect();
+
+      const overlapX = Math.max(
+        0,
+        Math.min(cardRect.right, elementRect.right) -
+          Math.max(cardRect.left, elementRect.left)
+      );
+      const overlapY = Math.max(
+        0,
+        Math.min(cardRect.bottom, elementRect.bottom) -
+          Math.max(cardRect.top, elementRect.top)
+      );
+      const overlapArea = overlapX * overlapY;
+
+      if (overlapArea > maxOverlapArea) {
+        maxOverlapArea = overlapArea;
+        bestMatchElement = element;
+      }
+    });
+
+    if (bestMatchElement) {
+      bestMatchElement.classList.add("game-board__positive-overlap");
     }
   }
 }

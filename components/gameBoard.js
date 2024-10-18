@@ -13,6 +13,9 @@ export default class GameBoard {
     this.fillTableus();
     this.fillStock();
     document.body.addEventListener("resetStock", () => this.resetStock());
+    document.body.addEventListener("resetOverlapIndication", () =>
+      this.resetOverlapIndication()
+    );
   }
 
   // placeholders
@@ -64,6 +67,19 @@ export default class GameBoard {
     wasteCards.forEach((card) => {
       card.classList.remove("card__flipped");
       this.stock.appendChild(card);
+    });
+  }
+
+  // helper
+  resetOverlapIndication() {
+    const overlapElements = document.querySelectorAll(
+      ".game-board__positive-overlap, .game-board__negative-overlap"
+    );
+    overlapElements.forEach((element) => {
+      element.classList.remove(
+        "game-board__positive-overlap",
+        "game-board__negative-overlap"
+      );
     });
   }
 }
