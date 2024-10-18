@@ -16,6 +16,7 @@ export default class Card {
     this.card.addEventListener("mousedown", (event) => this.onMouseDown(event));
   }
 
+  // create
   createCard(name) {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -27,13 +28,9 @@ export default class Card {
     return card;
   }
 
-  isInStock() {
-    return this.card.parentNode.classList.contains("game-board__stock");
-  }
-
+  // on click events
   onClick() {
-    if (!this.clikable) return;
-    if (this.isInStock()) {
+    if (this.isStock()) {
       this.onClickOnStock();
     }
   }
@@ -47,11 +44,10 @@ export default class Card {
     }
   }
 
-  flippCard(faceIsUp) {
-    this.card.classList.toggle("card__flipped", faceIsUp);
-  }
-
+  // on mouse down events
   onMouseDown(event) {
+    if (this.placeholder) return;
+    if (!this.isFlipped()) return;
     this.startX = event.clientX;
     this.startY = event.clientY;
     this.onMouseMoveBound = this.onMouseMove.bind(this);
@@ -75,6 +71,19 @@ export default class Card {
     this.card.style.zIndex = 0;
     document.removeEventListener("mousemove", this.onMouseMoveBound);
     document.removeEventListener("mouseup", this.onMouseUpBound);
+  }
+
+  // heper
+  isStock() {
+    return this.card.parentNode.classList.contains("game-board__stock");
+  }
+
+  isFlipped() {
+    return this.card.classList.contains("card__flipped");
+  }
+
+  flippCard(faceIsUp) {
+    this.card.classList.toggle("card__flipped", faceIsUp);
   }
 
   checkForOverlap() {
