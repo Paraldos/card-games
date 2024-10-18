@@ -50,6 +50,7 @@ export default class Card {
   onMouseMove(event) {
     let newX = event.clientX - this.startX;
     let newY = event.clientY - this.startY;
+    this.card.style.zIndex = 1000;
     this.card.style.setProperty("--transformX", `${newX}px`);
     this.card.style.setProperty("--transformY", `${newY}px`);
   }
@@ -57,6 +58,7 @@ export default class Card {
   onMouseUp() {
     this.card.style.setProperty("--transformX", `0px`);
     this.card.style.setProperty("--transformY", `0px`);
+    this.card.style.zIndex = 0;
 
     document.removeEventListener("mousemove", this.onMouseMoveBound);
     document.removeEventListener("mouseup", this.onMouseUpBound);
