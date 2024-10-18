@@ -77,10 +77,14 @@ export default class Card {
     this.card.style.setProperty("--transformY", `${newY}px`);
     if (this.isTableau() || this.isWaste()) {
       const foundations = document.querySelectorAll(".game-board__foundation");
-      const overlap = this.getOverlap(foundations);
+      const tableaus = document.querySelectorAll(".game-board__tableau");
+      const overlap = this.getOverlap([...foundations, ...tableaus]);
       if (!overlap) return;
       if (overlap.classList.contains("game-board__foundation")) {
-        this.checkOverlappingFoundation(overlap);
+        this.checkOverlapFoundation(overlap);
+      }
+      if (overlap.classList.contains("game-board__tableau")) {
+        this.checkOverlapTableau(overlap);
       }
     }
   }
@@ -105,9 +109,8 @@ export default class Card {
     }
   }
 
-  checkOverlappingFoundation(overlap) {
+  checkOverlapFoundation(overlap) {
     const topCard = overlap.childNodes[overlap.childNodes.length - 1];
-
     if (topCard.classList.contains("card__placeholder") && this.rank === "A") {
       overlap.classList.add("game-board__positive-overlap");
     } else if (
@@ -117,6 +120,32 @@ export default class Card {
       overlap.classList.add("game-board__positive-overlap");
     } else {
       overlap.classList.add("game-board__negative-overlap");
+    }
+  }
+
+  checkOverlapTableau(overlap) {
+    const topCard = overlap.childNodes[overlap.childNodes.length - 1];
+    if (topCard.classList.contains("card__placeholder") && this.rank === "K") {
+      overlap.classList.add("game-board__positive-overlap");
+    } else if (
+      this.checkSuitDistance(topCard.dataset.suit, this.suit) === 1 &&
+      this.checkRankDistance(topCard.dataset.rank, this.rank) === -1
+    ) {
+      overlap.classList.add("game-board__positive-overlap");
+    } else {
+      overlap.classList.add("game-board__negative-overlap");
+    }
+  }
+
+  checkSuitDistance(homeSuit, compareSuit) {
+    const red = "DH";
+    const black = "SC";
+    if (red.includes(homeSuit) && black.includes(compareSuit)) {
+      return 1;
+    } else if (black.includes(homeSuit) && red.includes(compareSuit)) {
+      return 1;
+    } else {
+      return 0;
     }
   }
 
