@@ -6,7 +6,6 @@ export default class Card {
     this.suit = name[0];
     this.rank = name[1];
     this.clikable = FileSystemWritableFileStream;
-    this.flipped = false;
     this.card = this.createCard(name);
     this.startX = 0;
     this.startY = 0;
@@ -49,7 +48,6 @@ export default class Card {
   }
 
   flippCard(faceIsUp) {
-    this.flipped = faceIsUp;
     this.card.classList.toggle("card__flipped", faceIsUp);
   }
 

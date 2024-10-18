@@ -58,8 +58,11 @@ export default class GameBoard {
   }
 
   resetStock() {
-    const wasteCards = this.waste.querySelectorAll(".card");
+    let wasteCards = Array.from(this.waste.querySelectorAll(".card"));
+    wasteCards.shift();
+    wasteCards = wasteCards.reverse();
     wasteCards.forEach((card) => {
+      card.classList.remove("card__flipped");
       this.stock.appendChild(card);
     });
   }
