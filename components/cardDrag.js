@@ -2,6 +2,8 @@ export default class CardDrag {
   constructor(parent) {
     this.parent = parent;
     this.card = parent.card;
+    this.suit = parent.suit;
+    this.rank = parent.rank;
     this.startX = 0;
     this.startY = 0;
     this.moved = false;
@@ -22,16 +24,13 @@ export default class CardDrag {
   }
 
   onMouseMove(event) {
-    this.moveCard(event);
-    this.checkForOverlap();
-  }
-
-  moveCard(event) {
     let newX = event.clientX - this.startX;
     let newY = event.clientY - this.startY;
     this.card.style.zIndex = 1000;
     this.card.style.setProperty("--transformX", `${newX}px`);
     this.card.style.setProperty("--transformY", `${newY}px`);
+    document.body.dispatchEvent(new Event("resetOverlapIndication"));
+    this.checkForOverlap();
   }
 
   checkForOverlap() {
@@ -41,48 +40,16 @@ export default class CardDrag {
       this.onOverlapWithFoundation(overlap);
     }
     if (overlap.classList.contains("game-board__tableau")) {
-      this.checkOverlapTableau(overlap);
+      this.onOverlapTableau(overlap);
     }
   }
 
-  onOverlapWithFoundation(overlap) {
-    const topCard = overlap.childNodes[overlap.childNodes.length - 1];
-    if (
-      topCard.classList.contains("card__placeholder") &&
-      this.parent.rank === "A"
-    ) {
-      overlap.classList.add("game-board__positive-overlap");
-    } else if (
-      this.parent.suit === topCard.dataset.suit &&
-      this.parent.checkRankDistance(topCard.dataset.rank, this.rank) === 1
-    ) {
-      overlap.classList.add("game-board__positive-overlap");
-    } else {
-      overlap.classList.add("game-board__negative-overlap");
-    }
-  }
-
-  onMouseUp() {
-    this.card.style.setProperty("--transformX", `0px`);
-    this.card.style.setProperty("--transformY", `0px`);
-    this.card.style.zIndex = 0;
-    document.removeEventListener("mousemove", this.onMouseMoveBound);
-    document.removeEventListener("mouseup", this.onMouseUpBound);
-    this.onMouseUpOnPositiveOverlap();
-    document.body.dispatchEvent(new Event("resetOverlapIndication"));
-  }
-
-  // helper
   getOverlap(overlapTargets = []) {
-    document.body.dispatchEvent(new Event("resetOverlapIndication"));
-
     const cardRect = this.card.getBoundingClientRect();
     let maxOverlapArea = 0;
     let bestMatchElement = null;
-
     overlapTargets.forEach((element) => {
       const elementRect = element.getBoundingClientRect();
-
       const overlapX = Math.max(
         0,
         Math.min(cardRect.right, elementRect.right) -
@@ -100,30 +67,62 @@ export default class CardDrag {
         bestMatchElement = element;
       }
     });
-
     return bestMatchElement;
   }
 
-  onMouseUpOnPositiveOverlap() {
-    const positiveOverlap = document.querySelector(
-      ".game-board__positive-overlap"
-    );
-    if (positiveOverlap) {
-      positiveOverlap.appendChild(this.card);
+  onOverlapWithFoundation(overlap) {
+    const topCard = overlap.childNodes[overlap.childNodes.length - 1];
+    if (topCard.classList.contains("card__placeholder") && this.rank === "A") {
+      overlap.classList.add("game-board__positive-overlap");
+    } else if (
+      this.suit === topCard.dataset.suit &&
+      this.parent.checkRankDistance(topCard.dataset.rank, this.rank) === 1
+    ) {
+      overlap.classList.add("game-board__positive-overlap");
+    } else {
+      overlap.classList.add("game-board__negative-overlap");
     }
   }
 
-  checkOverlapTableau(overlap) {
+  onOverlapTableau(overlap) {
     const topCard = overlap.childNodes[overlap.childNodes.length - 1];
     if (topCard.classList.contains("card__placeholder") && this.rank === "K") {
       overlap.classList.add("game-board__positive-overlap");
     } else if (
       this.parent.checkSuitDistance(topCard.dataset.suit, this.suit) === 1 &&
-      this.parentcheckRankDistance(topCard.dataset.rank, this.rank) === -1
+      this.parent.checkRankDistance(topCard.dataset.rank, this.rank) === -1
     ) {
       overlap.classList.add("game-board__positive-overlap");
     } else {
       overlap.classList.add("game-board__negative-overlap");
+    }
+  }
+
+  // mouse up
+  onMouseUp() {
+    this.resetPosition();
+    this.resetEventListeners();
+    this.onPositiveOverlap();
+    document.body.dispatchEvent(new Event("resetOverlapIndication"));
+  }
+
+  resetPosition() {
+    this.card.style.setProperty("--transformX", `0px`);
+    this.card.style.setProperty("--transformY", `0px`);
+    this.card.style.zIndex = 0;
+  }
+
+  resetEventListeners() {
+    document.removeEventListener("mousemove", this.onMouseMoveBound);
+    document.removeEventListener("mouseup", this.onMouseUpBound);
+  }
+
+  onPositiveOverlap() {
+    const positiveOverlap = document.querySelector(
+      ".game-board__positive-overlap"
+    );
+    if (positiveOverlap) {
+      positiveOverlap.appendChild(this.card);
     }
   }
 }
