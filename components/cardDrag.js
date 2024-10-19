@@ -26,11 +26,30 @@ export default class CardDrag {
   onMouseMove(event) {
     let newX = event.clientX - this.startX;
     let newY = event.clientY - this.startY;
-    this.card.style.zIndex = 1000;
-    this.card.style.setProperty("--transformX", `${newX}px`);
-    this.card.style.setProperty("--transformY", `${newY}px`);
+    if (this.parent.isTableau()) {
+      this.affectedCards = this.getCardsBellow();
+      this.affectedCards.forEach((card, index) => {
+        card.style.zIndex = 100 + index;
+        card.style.setProperty("--transformX", `${newX}px`);
+        card.style.setProperty("--transformY", `${newY}px`);
+      });
+    } else {
+      this.card.style.zIndex = 100;
+      this.card.style.setProperty("--transformX", `${newX}px`);
+      this.card.style.setProperty("--transformY", `${newY}px`);
+    }
     document.body.dispatchEvent(new Event("resetOverlapIndication"));
     this.checkForOverlap();
+  }
+
+  getCardsBellow() {
+    const cardsBellow = [];
+    let addCards = false;
+    this.getSiblings().forEach((card) => {
+      if (card === this.card) addCards = true;
+      if (addCards) cardsBellow.push(card);
+    });
+    return cardsBellow;
   }
 
   checkForOverlap() {
@@ -40,7 +59,7 @@ export default class CardDrag {
     if (overlap.classList.contains("game-board__foundation")) {
       this.onOverlapWithFoundation(overlap);
     }
-    if (overlap.parentElement.classList.contains("game-board__tableau")) {
+    if (this.parent.isTableau()) {
       this.onOverlapTableau(overlap);
     }
   }
@@ -110,16 +129,10 @@ export default class CardDrag {
 
   // mouse up
   onMouseUp() {
-    this.resetPosition();
     this.resetEventListeners();
     this.onPositiveOverlap();
+    document.body.dispatchEvent(new Event("resetPosition"));
     document.body.dispatchEvent(new Event("resetOverlapIndication"));
-  }
-
-  resetPosition() {
-    this.card.style.setProperty("--transformX", `0px`);
-    this.card.style.setProperty("--transformY", `0px`);
-    this.card.style.zIndex = 0;
   }
 
   resetEventListeners() {
@@ -132,5 +145,10 @@ export default class CardDrag {
     if (positiveOverlap) {
       positiveOverlap.appendChild(this.card);
     }
+  }
+
+  // helper
+  getSiblings() {
+    return Array.from(this.card.parentNode.children);
   }
 }

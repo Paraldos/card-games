@@ -13,6 +13,17 @@ export default class Card {
     document.body.addEventListener("resetOverlapIndication", () =>
       this.onResetOverlapIndication()
     );
+    document.body.addEventListener("resetPosition", () =>
+      this.onResetPosition()
+    );
+  }
+
+  onResetPosition() {
+    this.card.style.setProperty("--transformX", `0px`);
+    this.card.style.setProperty("--transformY", `0px`);
+    setTimeout(() => {
+      this.card.style.zIndex = 0;
+    }, 500);
   }
 
   onResetOverlapIndication() {
