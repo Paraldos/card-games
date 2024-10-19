@@ -10,6 +10,13 @@ export default class Card {
     this.card = this.createCard(name);
     new CardDrag(this);
     new CardOnClick(this);
+    document.body.addEventListener("resetOverlapIndication", () =>
+      this.onResetOverlapIndication()
+    );
+  }
+
+  onResetOverlapIndication() {
+    this.card.classList.remove("card__overlap");
   }
 
   createCard(name) {

@@ -33,7 +33,6 @@ export default class GameBoard {
   getPlaceholder() {
     const card = new Card("AC");
     card.card.classList.add("card__placeholder");
-    card.placeholder = true;
     return card.card;
   }
 
@@ -72,14 +71,9 @@ export default class GameBoard {
 
   // helper
   resetOverlapIndication() {
-    const overlapElements = document.querySelectorAll(
-      ".game-board__positive-overlap, .game-board__negative-overlap"
-    );
+    const overlapElements = document.querySelectorAll(".game-board__overlap");
     overlapElements.forEach((element) => {
-      element.classList.remove(
-        "game-board__positive-overlap",
-        "game-board__negative-overlap"
-      );
+      element.classList.remove("game-board__overlap");
     });
   }
 }

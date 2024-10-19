@@ -45,15 +45,15 @@ body {
 .game-board__card-field {
   width: 100%;
   height: fit-content;
-  border: 2px solid yellow;
-  border-radius: 7px;
+  border: 2px solid black;
+  border-radius: 8px;
   position: relative;
 }
-.game-board__positive-overlap {
-  border-color: green;
+.game-board__overlap {
+  border-color: grey;
 }
-.game-board__negative-overlap {
-  border-color: red;
+.game-board__overlap .card:last-child {
+  filter: brightness(0.7);
 }
 .game-board__waste .card:not(.card__placeholder), .game-board__stock .card:not(.card__placeholder), .game-board__foundation .card:not(.card__placeholder), .game-board__tableau .card:not(.card__placeholder) {
   position: absolute;

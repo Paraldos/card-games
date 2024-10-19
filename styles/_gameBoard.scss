@@ -9,17 +9,17 @@
   &__card-field {
     width: 100%;
     height: fit-content;
-    border: 2px solid yellow;
-    border-radius: 7px;
+    border: 2px solid black;
+    border-radius: 8px;
     position: relative;
   }
 
-  &__positive-overlap {
-    border-color: green;
-  }
+  &__overlap {
+    border-color: grey;
 
-  &__negative-overlap {
-    border-color: red;
+    .card:last-child {
+      filter: brightness(0.7);
+    }
   }
 
   &__waste,
