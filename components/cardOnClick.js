@@ -16,7 +16,7 @@ export default class CardOnClick {
   }
 
   onClickOnStock() {
-    if (this.parent.placeholder) {
+    if (this.parent.isPlaceholder()) {
       document.body.dispatchEvent(new Event("resetStock"));
     } else {
       this.waste.appendChild(this.card);
@@ -25,7 +25,7 @@ export default class CardOnClick {
   }
 
   onClickOnTableau() {
-    if (this.card.classList.contains("card__placeholder")) {
+    if (this.parent.isPlaceholder()) {
       return;
     } else if (this.parent.isLastChild()) {
       this.parent.flippCard(true);
