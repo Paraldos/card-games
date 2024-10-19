@@ -6,7 +6,6 @@ export default class CardDrag {
     this.rank = parent.rank;
     this.startX = 0;
     this.startY = 0;
-    this.moved = false;
     this.foundations = document.querySelectorAll(".game-board__foundation");
     this.tableaus = document.querySelectorAll(".game-board__tableau");
     this.card.addEventListener("mousedown", (event) => this.onMouseDown(event));
@@ -129,7 +128,10 @@ export default class CardDrag {
   // mouse up
   onMouseUp() {
     this.resetEventListeners();
-    this.onPositiveOverlap();
+    const positiveOverlap = document.querySelector(".game-board__overlap");
+    if (positiveOverlap) {
+      this.onPositiveOverlap(positiveOverlap);
+    }
     document.body.dispatchEvent(new Event("resetPosition"));
     document.body.dispatchEvent(new Event("resetOverlapIndication"));
   }
@@ -139,14 +141,11 @@ export default class CardDrag {
     document.removeEventListener("mouseup", this.onMouseUpBound);
   }
 
-  onPositiveOverlap() {
-    const positiveOverlap = document.querySelector(".game-board__overlap");
-    if (positiveOverlap) {
-      this.getSilblingsBellow().forEach((card) => {
-        positiveOverlap.appendChild(card);
-      });
-      positiveOverlap.appendChild(this.card);
-    }
+  onPositiveOverlap(overlap) {
+    this.getSilblingsBellow().forEach((card) => {
+      overlap.appendChild(card);
+    });
+    positiveOverlap.appendChild(this.card);
   }
 
   // helper
