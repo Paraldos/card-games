@@ -1,3 +1,5 @@
+@import "./meta/_include.scss";
+@import "./body.scss";
 @import "./loader.scss";
 @import "./gameBoard.scss";
 @import "./cards.scss";
@@ -9,14 +11,4 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
-  min-height: 100vh;
-  background-color: grey;
-  padding: 20px;
-}
-
-.hidden {
-  display: none;
 }

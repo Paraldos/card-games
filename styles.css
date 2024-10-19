@@ -1,3 +1,18 @@
+* {
+  --color__green: #2f9f6c;
+  --color__red: #c1304e;
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color__green);
+  padding: 20px;
+}
+
 .loader {
   --size: 120px;
   border: 16px solid #f3f3f3; /* Light grey */
@@ -116,16 +131,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
-  min-height: 100vh;
-  background-color: grey;
-  padding: 20px;
-}
-
-.hidden {
-  display: none;
 }
 
 /*# sourceMappingURL=styles.css.map */
