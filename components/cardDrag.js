@@ -141,9 +141,9 @@ export default class CardDrag {
     document.removeEventListener("mouseup", this.onMouseUpBound);
   }
 
-  onPositiveOverlap(overlap) {
+  onPositiveOverlap(positiveOverlap) {
     this.getSilblingsBellow().forEach((card) => {
-      overlap.appendChild(card);
+      positiveOverlap.appendChild(card);
     });
     positiveOverlap.appendChild(this.card);
   }
