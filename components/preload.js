@@ -71,7 +71,9 @@ class Preload {
       [this.prepSvg("/assets/poker-qr/AC.svg", "AC")],
       [this.prepSvg("/assets/poker-qr/AD.svg", "AD")],
       [this.prepSvg("/assets/poker-qr/AH.svg", "AH")],
-      [this.prepSvg("/assets/poker-qr/AS.svg", "AS")]
+      [this.prepSvg("/assets/poker-qr/AS.svg", "AS")][
+        this.prepSvg("/assets/poker-qr/1J.svg", "1J")
+      ]
     );
     await this.wait(100);
     console.log("SVGs loaded");

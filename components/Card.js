@@ -18,6 +18,19 @@ export default class Card {
     );
   }
 
+  createCard(name) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.dataset.rank = this.rank;
+    card.dataset.suit = this.suit;
+    const cardInner = document.createElement("div");
+    cardInner.classList.add("card__inner");
+    cardInner.appendChild(preload.getSVG(`${"2B"}`));
+    cardInner.appendChild(preload.getSVG(`${name}`));
+    card.appendChild(cardInner);
+    return card;
+  }
+
   onResetPosition() {
     this.card.style.setProperty("--transformX", `0px`);
     this.card.style.setProperty("--transformY", `0px`);
@@ -31,19 +44,6 @@ export default class Card {
 
   onResetOverlapIndication() {
     this.card.classList.remove("card__overlap");
-  }
-
-  createCard(name) {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.dataset.rank = this.rank;
-    card.dataset.suit = this.suit;
-    const cardInner = document.createElement("div");
-    cardInner.classList.add("card__inner");
-    cardInner.appendChild(preload.getSVG(`${"2B"}`));
-    cardInner.appendChild(preload.getSVG(`${name}`));
-    card.appendChild(cardInner);
-    return card;
   }
 
   checkSuitDistance(homeSuit, compareSuit) {

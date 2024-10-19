@@ -31,7 +31,7 @@ export default class GameBoard {
   }
 
   getPlaceholder() {
-    const card = new Card("AC");
+    const card = new Card("1J");
     card.card.classList.add("card__placeholder");
     return card.card;
   }
