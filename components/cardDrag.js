@@ -55,11 +55,13 @@ export default class CardDrag {
   checkForOverlap() {
     const overlapList = this.getOverlapList();
     const overlap = this.getOverlap(overlapList);
+    console.log(overlap);
+
     if (!overlap) return;
     if (overlap.classList.contains("game-board__foundation")) {
       this.onOverlapWithFoundation(overlap);
     }
-    if (this.parent.isTableau()) {
+    if (overlap.parentElement.classList.contains("game-board__tableau")) {
       this.onOverlapTableau(overlap);
     }
   }
@@ -69,9 +71,8 @@ export default class CardDrag {
     overlapList = [...this.foundations];
     this.tableaus.forEach((tableau) => {
       const lastCard = tableau.children[tableau.childNodes.length - 1];
-      if (lastCard.classList.contains("card__placeholder")) return;
       if (!lastCard.classList.contains("card__flipped")) return;
-      if (lastCard == this.card) return;
+      if (tableau === this.card.parentElement) return;
       overlapList.push(lastCard);
     });
     return overlapList;
@@ -143,6 +144,9 @@ export default class CardDrag {
   onPositiveOverlap() {
     const positiveOverlap = document.querySelector(".game-board__overlap");
     if (positiveOverlap) {
+      this.getSilblingsBellow().forEach((card) => {
+        positiveOverlap.appendChild(card);
+      });
       positiveOverlap.appendChild(this.card);
     }
   }
@@ -150,5 +154,11 @@ export default class CardDrag {
   // helper
   getSiblings() {
     return Array.from(this.card.parentNode.children);
+  }
+
+  getSilblingsBellow() {
+    const siblings = this.getSiblings();
+    const index = siblings.findIndex((element) => element === this.card);
+    return siblings.slice(index + 1);
   }
 }

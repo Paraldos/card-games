@@ -25,7 +25,7 @@ export default class CardOnClick {
   }
 
   onClickOnTableau() {
-    if (this.placeholder) {
+    if (this.card.classList.contains("card__placeholder")) {
       return;
     } else if (this.parent.isLastChild()) {
       this.parent.flippCard(true);
