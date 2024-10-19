@@ -18,6 +18,14 @@ export default class Card {
     );
   }
 
+  moveCardToNewParent(newParent) {
+    const siblings = this.getSiblings();
+    const index = siblings.findIndex((element) => element === this.card);
+    siblings.slice(index).forEach((card) => {
+      newParent.appendChild(card);
+    });
+  }
+
   createCard(name) {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -89,5 +97,15 @@ export default class Card {
 
   flippCard(faceIsUp) {
     this.card.classList.toggle("card__flipped", faceIsUp);
+  }
+
+  getSiblings() {
+    return Array.from(this.card.parentNode.children);
+  }
+
+  hasSiblingsBellow() {
+    const siblings = this.getSiblings();
+    const index = siblings.findIndex((element) => element === this.card);
+    return siblings.length > index + 1;
   }
 }

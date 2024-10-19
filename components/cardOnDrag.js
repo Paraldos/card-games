@@ -44,7 +44,7 @@ export default class CardOnDrag {
   getCardsBellow() {
     const cardsBellow = [];
     let addCards = false;
-    this.getSiblings().forEach((card) => {
+    this.parent.getSiblings().forEach((card) => {
       if (card === this.card) addCards = true;
       if (addCards) cardsBellow.push(card);
     });
@@ -102,6 +102,7 @@ export default class CardOnDrag {
   }
 
   onOverlapWithFoundation(overlap) {
+    if (this.parent.hasSiblingsBellow()) return;
     const topCard = overlap.childNodes[overlap.childNodes.length - 1];
     if (topCard.classList.contains("card__placeholder") && this.rank === "A") {
       overlap.classList.add("game-board__overlap");
@@ -130,7 +131,7 @@ export default class CardOnDrag {
     this.resetEventListeners();
     const positiveOverlap = document.querySelector(".game-board__overlap");
     if (positiveOverlap) {
-      this.onPositiveOverlap(positiveOverlap);
+      this.parent.moveCardToNewParent(positiveOverlap);
     }
     document.body.dispatchEvent(new Event("resetPosition"));
     document.body.dispatchEvent(new Event("resetOverlapIndication"));
@@ -139,23 +140,5 @@ export default class CardOnDrag {
   resetEventListeners() {
     document.removeEventListener("mousemove", this.onMouseMoveBound);
     document.removeEventListener("mouseup", this.onMouseUpBound);
-  }
-
-  onPositiveOverlap(positiveOverlap) {
-    this.getSilblingsBellow().forEach((card) => {
-      positiveOverlap.appendChild(card);
-    });
-    positiveOverlap.appendChild(this.card);
-  }
-
-  // helper
-  getSiblings() {
-    return Array.from(this.card.parentNode.children);
-  }
-
-  getSilblingsBellow() {
-    const siblings = this.getSiblings();
-    const index = siblings.findIndex((element) => element === this.card);
-    return siblings.slice(index + 1);
   }
 }
