@@ -2,6 +2,7 @@
 import preload from "./preload.js";
 import CardOnClick from "./cardOnClick.js";
 import CardOnDrag from "./cardOnDrag.js";
+import saveFile from "./SaveFile.js";
 
 export default class Card {
   constructor(name) {
@@ -19,11 +20,21 @@ export default class Card {
   }
 
   moveCardToNewParent(newParent) {
+    var move = {
+      oldFile: this.card.parentNode,
+      newFile: newParent,
+      card: [],
+    };
+
     const siblings = this.getSiblings();
     const index = siblings.findIndex((element) => element === this.card);
     siblings.slice(index).forEach((card) => {
+      move.card.push(card);
       newParent.appendChild(card);
     });
+    saveFile.push(move);
+
+    console.log(saveFile);
   }
 
   createCard(name) {
