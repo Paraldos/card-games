@@ -24,6 +24,9 @@ export default class Card {
     setTimeout(() => {
       this.card.style.zIndex = 0;
     }, 500);
+    if (this.isTableau() && this.isLastChild() && !this.isPlaceholder()) {
+      this.flippCard(true);
+    }
   }
 
   onResetOverlapIndication() {

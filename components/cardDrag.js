@@ -55,8 +55,6 @@ export default class CardDrag {
   checkForOverlap() {
     const overlapList = this.getOverlapList();
     const overlap = this.getOverlap(overlapList);
-    console.log(overlap);
-
     if (!overlap) return;
     if (overlap.classList.contains("game-board__foundation")) {
       this.onOverlapWithFoundation(overlap);
@@ -71,10 +69,10 @@ export default class CardDrag {
     overlapList = [...this.foundations];
     this.tableaus.forEach((tableau) => {
       const lastCard = tableau.children[tableau.childNodes.length - 1];
-      if (!lastCard.classList.contains("card__flipped")) return;
       if (tableau === this.card.parentElement) return;
       overlapList.push(lastCard);
     });
+
     return overlapList;
   }
 
