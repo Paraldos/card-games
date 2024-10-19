@@ -1,4 +1,4 @@
-export default class CardDrag {
+export default class CardOnDrag {
   constructor(parent) {
     this.parent = parent;
     this.card = parent.card;

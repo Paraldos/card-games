@@ -1,14 +1,14 @@
 // (B)ackground (C)lubs, (D)iamonds, (H)earts, (S)pades
 import preload from "./preload.js";
 import CardOnClick from "./cardOnClick.js";
-import CardDrag from "./cardDrag.js";
+import CardOnDrag from "./cardOnDrag.js";
 
 export default class Card {
   constructor(name) {
     this.rank = name[0];
     this.suit = name[1];
     this.card = this.createCard(name);
-    new CardDrag(this);
+    new CardOnDrag(this);
     new CardOnClick(this);
     document.body.addEventListener("resetOverlapIndication", () =>
       this.onResetOverlapIndication()
