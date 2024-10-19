@@ -4,18 +4,14 @@ export default class CardOnClick {
     this.card = parent.card;
     this.waste = document.querySelector(".game-board__waste");
     this.drage = false;
-    this.card.addEventListener("click", () => this.onClick());
-  }
-
-  onMouseUp() {
-    if (!this.drage) {
-      this.onClick();
-    }
+    this.card.addEventListener("mousedown", () => (this.drage = false));
+    this.card.addEventListener("mousemove", () => (this.drage = true));
+    this.card.addEventListener("mouseup", () =>
+      !this.drage ? this.onClick() : null
+    );
   }
 
   onClick() {
-    console.log("click");
-
     if (this.parent.isStock()) {
       this.onClickOnStock();
     }
