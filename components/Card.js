@@ -19,22 +19,19 @@ export default class Card {
     );
   }
 
-  moveCardToNewParent(newParent) {
+  moveCardToNewParent(newParent, save = true) {
     var move = {
       oldFile: this.card.parentNode,
       newFile: newParent,
       card: [],
     };
-
     const siblings = this.getSiblings();
     const index = siblings.findIndex((element) => element === this.card);
     siblings.slice(index).forEach((card) => {
       move.card.push(card);
       newParent.appendChild(card);
     });
-    saveFile.push(move);
-
-    console.log(saveFile);
+    if (save) saveFile.push(move);
   }
 
   createCard(name) {
