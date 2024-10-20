@@ -1,15 +1,16 @@
 import Cards from "./Cards.js";
 import Card from "./Card.js";
+import Loader from "./loader.js";
 
 export default class GameBoard {
   constructor() {
-    this.loader = document.querySelector(".loader");
     this.gameBoard = document.querySelector(".game-board");
     this.stock = document.querySelector(".game-board__stock");
     this.waste = document.querySelector(".game-board__waste");
     this.foundation = document.querySelectorAll(".game-board__foundation");
     this.tableau = document.querySelectorAll(".game-board__tableau");
     this.cards = new Cards().getCards();
+    this.Loader = new Loader();
     this.startGameBoard();
     this.addPlaceholders();
     this.fillTableus();
@@ -21,7 +22,7 @@ export default class GameBoard {
   }
 
   startGameBoard() {
-    this.loader.remove();
+    this.Loader.hideLoader();
     this.gameBoard.classList.remove("hidden");
   }
 

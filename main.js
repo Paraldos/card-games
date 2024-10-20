@@ -3,6 +3,6 @@ import GameBoard from "./components/gameBoard.js";
 import Button from "./components/button.js";
 
 document.body.addEventListener("svgsLoaded", () => {
-  new Button();
   new GameBoard();
+  new Button();
 });
