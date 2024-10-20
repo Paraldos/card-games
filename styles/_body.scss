@@ -1,5 +1,8 @@
 body {
   min-height: 100vh;
   background-color: var(--color__green);
-  padding: 20px;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

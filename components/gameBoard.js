@@ -3,12 +3,14 @@ import Card from "./Card.js";
 
 export default class GameBoard {
   constructor() {
+    this.loader = document.querySelector(".loader");
     this.gameBoard = document.querySelector(".game-board");
     this.stock = document.querySelector(".game-board__stock");
     this.waste = document.querySelector(".game-board__waste");
     this.foundation = document.querySelectorAll(".game-board__foundation");
     this.tableau = document.querySelectorAll(".game-board__tableau");
-    this.Cards = new Cards().getCards();
+    this.cards = new Cards().getCards();
+    this.startGameBoard();
     this.addPlaceholders();
     this.fillTableus();
     this.fillStock();
@@ -16,6 +18,11 @@ export default class GameBoard {
     document.body.addEventListener("resetOverlapIndication", () =>
       this.resetOverlapIndication()
     );
+  }
+
+  startGameBoard() {
+    this.loader.remove();
+    this.gameBoard.classList.remove("hidden");
   }
 
   // placeholders
@@ -40,7 +47,7 @@ export default class GameBoard {
   fillTableus() {
     this.tableau.forEach((tableau, index) => {
       for (let i = 0; i < index + 1; i++) {
-        const card = this.Cards.pop();
+        const card = this.cards.pop();
         if (i == index) {
           card.flippCard(true);
         } else {
@@ -53,7 +60,7 @@ export default class GameBoard {
 
   // stock
   fillStock() {
-    this.Cards.forEach((card) => {
+    this.cards.forEach((card) => {
       card.flippCard(false);
       this.stock.appendChild(card.card);
     });

@@ -1,6 +1,7 @@
 * {
   --color__green: #2f9f6c;
   --color__red: #c1304e;
+  --footer-height: 80px;
 }
 
 .hidden {
@@ -10,7 +11,10 @@
 body {
   min-height: 100vh;
   background-color: var(--color__green);
-  padding: 20px;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .loader {
@@ -153,6 +157,22 @@ body {
 }
 .card__placeholder svg {
   opacity: 0.2;
+}
+
+footer {
+  width: 100%;
+  height: var(--footer-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+button {
+  height: 60px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
 }
 
 *,
