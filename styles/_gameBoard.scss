@@ -1,11 +1,54 @@
 .game-board {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1fr 100%;
   grid-gap: 10px;
+
+  grid-template-areas:
+    "stock waste . foundation1 foundation2 foundation3 foundation4"
+    "tableau1 tableau2 tableau3 tableau4 tableau5 tableau6 tableau7";
+
+  height: 100%;
+  max-width: min(100%, 900px);
+  aspect-ratio: 1.46;
+
   margin: 0 auto;
-  width: min(100%, 900px);
-  perspective: 1000px;
   padding: 2%;
+
+  // @media (max-aspect-ratio: 2/3) {
+  //   background-color: red;
+  //   grid-template-columns: repeat(3, 1fr);
+  //   grid-template-rows: repeat(7, 1fr);
+  //   grid-template-areas:
+  //     "stock tableau1 ."
+  //     "waste tableau2 ."
+  //     ". tableau3 ."
+  //     "foundation1 tableau4 ."
+  //     "foundation2 tableau5 ."
+  //     "foundation3 tableau6 ."
+  //     "foundation4 tableau7 .";
+  //   aspect-ratio: 0.68;
+  // }
+
+  &__stock {
+    grid-area: stock;
+  }
+
+  &__waste {
+    grid-area: waste;
+  }
+
+  @for $i from 1 through 4 {
+    &__foundation--#{$i} {
+      grid-area: foundation#{$i};
+    }
+  }
+
+  @for $i from 1 through 7 {
+    &__tableau--#{$i} {
+      grid-area: tableau#{$i};
+    }
+  }
 
   &__card-field {
     width: 100%;
@@ -34,12 +77,13 @@
     }
   }
 
-  &__tableau {
-    .card:not(.card__placeholder) {
-      @for $i from 1 through 20 {
-        &:nth-child(#{$i}) {
-          top: #{($i - 2) * 14%};
-        }
+  @for $i from 1 through 20 {
+    &__tableau .card:not(.card__placeholder):nth-child(#{$i}) {
+      top: #{($i - 2) * 14%};
+
+      @media (max-aspect-ratio: 2/3) {
+        top: 0 !important;
+        left: #{($i - 2) * 20%};
       }
     }
   }

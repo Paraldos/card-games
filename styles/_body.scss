@@ -1,5 +1,7 @@
 body {
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  // aspect-ratio: 920/630;
   background-color: var(--color__green300);
   display: flex;
   flex-direction: column;
