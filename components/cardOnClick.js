@@ -35,6 +35,7 @@ export default class CardOnClick {
 
   onClickOnTableau() {
     if (this.parent.isPlaceholder()) return;
+    if (!this.parent.isFlipped()) return;
     this.moveKingToTableau();
     this.moveCardToTableau();
     this.moveAceToFoundation();
@@ -43,7 +44,6 @@ export default class CardOnClick {
 
   onClickWaste() {
     if (this.parent.isPlaceholder()) return;
-    if (this.parent.hasSiblingsBellow()) return;
     this.moveKingToTableau();
     this.moveCardToTableau();
     this.moveAceToFoundation();
@@ -82,6 +82,7 @@ export default class CardOnClick {
   }
 
   moveAceToFoundation() {
+    if (this.parent.hasSiblingsBellow()) return;
     if (this.parent.rank !== "A") return;
     const foundations = document.querySelectorAll(".game-board__foundation");
     foundations.forEach((foundation) => {
@@ -92,6 +93,7 @@ export default class CardOnClick {
   }
 
   moveCardToFoundation() {
+    if (this.parent.hasSiblingsBellow()) return;
     if (this.parent.rank === "A") return;
     const foundations = document.querySelectorAll(".game-board__foundation");
     foundations.forEach((foundation) => {
