@@ -7,6 +7,10 @@
   gap: 20px;
   padding: 0 2%;
 
+  @media screen and (min-width: 768px) {
+    justify-content: center;
+  }
+
   &__vertical-ruler {
     width: 4px;
     height: var(--button-height);

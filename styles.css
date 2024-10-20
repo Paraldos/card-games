@@ -180,6 +180,11 @@ body {
   gap: 20px;
   padding: 0 2%;
 }
+@media screen and (min-width: 768px) {
+  .footer {
+    justify-content: center;
+  }
+}
 .footer__vertical-ruler {
   width: 4px;
   height: var(--button-height);
@@ -233,11 +238,22 @@ button:hover {
   display: none;
   margin-bottom: 10px;
 }
+@media screen and (min-width: 768px) {
+  .menu ul {
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
 .menu li {
   padding: 10px;
   background-color: var(--color__blue300);
   color: var(--color__white);
   text-align: right;
+}
+@media screen and (min-width: 768px) {
+  .menu li {
+    text-align: center;
+  }
 }
 .menu li:hover {
   background-color: var(--color__blue200);
@@ -255,12 +271,17 @@ button:hover {
   z-index: 10;
 }
 
+@font-face {
+  font-family: roboto;
+  src: url(../assets/fonts/Roboto-Medium.ttf);
+}
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: roboto, sans-serif;
 }
 
 /*# sourceMappingURL=styles.css.map */

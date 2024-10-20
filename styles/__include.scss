@@ -8,10 +8,16 @@
 @import "./menu.scss";
 @import "./modalBackground.scss";
 
+@font-face {
+  font-family: roboto;
+  src: url(../assets/fonts/Roboto-Medium.ttf);
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: roboto, sans-serif;
 }

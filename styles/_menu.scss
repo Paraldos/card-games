@@ -29,6 +29,11 @@
     min-width: 200px;
     display: none;
     margin-bottom: 10px;
+
+    @media screen and (min-width: 768px) {
+      right: 50%;
+      transform: translateX(50%);
+    }
   }
 
   li {
@@ -36,6 +41,10 @@
     background-color: var(--color__blue300);
     color: var(--color__white);
     text-align: right;
+
+    @media screen and (min-width: 768px) {
+      text-align: center;
+    }
 
     &:hover {
       background-color: var(--color__blue200);
