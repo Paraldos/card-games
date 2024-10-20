@@ -1,0 +1,11 @@
+.modal__background {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color__black);
+  opacity: 0.5;
+  z-index: -10;
+
+  &--active {
+    z-index: 10;
+  }
+}

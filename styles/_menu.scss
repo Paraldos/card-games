@@ -1,8 +1,13 @@
 .menu {
   position: relative;
 
-  &:hover ul {
-    display: block;
+  &:hover ul,
+  &--active ul {
+    display: block !important;
+  }
+
+  &--active {
+    z-index: 100;
   }
 
   hr {

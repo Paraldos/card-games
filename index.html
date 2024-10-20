@@ -32,7 +32,7 @@
       <div class="game-board__tableau game-board__card-field"></div>
       <div class="game-board__tableau game-board__card-field"></div>
     </div>
-    <footer>
+    <footer class="footer">
       <button class="button button__undo">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <path
@@ -40,16 +40,13 @@
           />
         </svg>
       </button>
+      <div class="footer__vertical-ruler"></div>
       <div class="menu">
         <ul>
-          <li>Hello</li>
-          <li>Hello</li>
-          <li>Hello</li>
-          <li>Hello</li>
-          <li>Hello</li>
+          <li class="button__restart">New Game</li>
         </ul>
         <hr />
-        <button class="button button__start">
+        <button class="button button__menu">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
             <path
               d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"
@@ -58,5 +55,6 @@
         </button>
       </div>
     </footer>
+    <div class="modal__background"></div>
   </body>
 </html>
