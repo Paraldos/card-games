@@ -4,7 +4,7 @@ export default class CardOnClick {
     this.card = parent.card;
     this.waste = document.querySelector(".game-board__waste");
     this.drage = 0;
-    this.drageThreshold = 25;
+    this.drageThreshold = 5;
     this.card.addEventListener("mousedown", () => (this.drage = 0));
     this.card.addEventListener("mousemove", () => {
       this.drage += 1;
