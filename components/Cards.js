@@ -1,6 +1,6 @@
 // (B)ackground (C)lubs, (D)iamonds, (H)earts, (S)pades
 import preload from "./preload.js";
-import Card from "./Card.js";
+import Card from "./card.js";
 
 export default class Cards {
   constructor() {

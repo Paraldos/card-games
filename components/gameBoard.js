@@ -1,5 +1,5 @@
 import Cards from "./Cards.js";
-import Card from "./Card.js";
+import Card from "./card.js";
 import Loader from "./loader.js";
 
 export default class GameBoard {
