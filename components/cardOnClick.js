@@ -25,7 +25,7 @@ export default class CardOnClick {
     if (this.parent.isPlaceholder()) {
       document.body.dispatchEvent(new Event("resetStock"));
     } else {
-      this.waste.appendChild(this.card);
+      this.parent.moveCardToNewParent(this.waste);
       this.parent.flippCard(true);
     }
   }
