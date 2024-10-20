@@ -81,10 +81,10 @@
     &__tableau .card:not(.card__placeholder):nth-child(#{$i}) {
       top: #{($i - 2) * 14%};
 
-      @media (max-aspect-ratio: 2/3) {
-        top: 0 !important;
-        left: #{($i - 2) * 20%};
-      }
+      // @media (max-aspect-ratio: 2/3) {
+      //   top: 0 !important;
+      //   left: #{($i - 2) * 20%};
+      // }
     }
   }
 }

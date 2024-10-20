@@ -14,6 +14,12 @@
   --footer-height: 80px;
   --button-height: 60px;
 }
+@media screen and (max-width: 768px) {
+  * {
+    --footer-height: 60px;
+    --button-height: 40px;
+  }
+}
 
 .hidden {
   display: none;
@@ -122,182 +128,62 @@ body {
 .game-board__tableau .card:not(.card__placeholder):nth-child(1) {
   top: -14%;
 }
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(1) {
-    top: 0 !important;
-    left: -20%;
-  }
-}
 .game-board__tableau .card:not(.card__placeholder):nth-child(2) {
   top: 0%;
-}
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(2) {
-    top: 0 !important;
-    left: 0%;
-  }
 }
 .game-board__tableau .card:not(.card__placeholder):nth-child(3) {
   top: 14%;
 }
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(3) {
-    top: 0 !important;
-    left: 20%;
-  }
-}
 .game-board__tableau .card:not(.card__placeholder):nth-child(4) {
   top: 28%;
-}
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(4) {
-    top: 0 !important;
-    left: 40%;
-  }
 }
 .game-board__tableau .card:not(.card__placeholder):nth-child(5) {
   top: 42%;
 }
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(5) {
-    top: 0 !important;
-    left: 60%;
-  }
-}
 .game-board__tableau .card:not(.card__placeholder):nth-child(6) {
   top: 56%;
-}
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(6) {
-    top: 0 !important;
-    left: 80%;
-  }
 }
 .game-board__tableau .card:not(.card__placeholder):nth-child(7) {
   top: 70%;
 }
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(7) {
-    top: 0 !important;
-    left: 100%;
-  }
-}
 .game-board__tableau .card:not(.card__placeholder):nth-child(8) {
   top: 84%;
-}
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(8) {
-    top: 0 !important;
-    left: 120%;
-  }
 }
 .game-board__tableau .card:not(.card__placeholder):nth-child(9) {
   top: 98%;
 }
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(9) {
-    top: 0 !important;
-    left: 140%;
-  }
-}
 .game-board__tableau .card:not(.card__placeholder):nth-child(10) {
   top: 112%;
-}
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(10) {
-    top: 0 !important;
-    left: 160%;
-  }
 }
 .game-board__tableau .card:not(.card__placeholder):nth-child(11) {
   top: 126%;
 }
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(11) {
-    top: 0 !important;
-    left: 180%;
-  }
-}
 .game-board__tableau .card:not(.card__placeholder):nth-child(12) {
   top: 140%;
-}
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(12) {
-    top: 0 !important;
-    left: 200%;
-  }
 }
 .game-board__tableau .card:not(.card__placeholder):nth-child(13) {
   top: 154%;
 }
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(13) {
-    top: 0 !important;
-    left: 220%;
-  }
-}
 .game-board__tableau .card:not(.card__placeholder):nth-child(14) {
   top: 168%;
-}
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(14) {
-    top: 0 !important;
-    left: 240%;
-  }
 }
 .game-board__tableau .card:not(.card__placeholder):nth-child(15) {
   top: 182%;
 }
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(15) {
-    top: 0 !important;
-    left: 260%;
-  }
-}
 .game-board__tableau .card:not(.card__placeholder):nth-child(16) {
   top: 196%;
-}
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(16) {
-    top: 0 !important;
-    left: 280%;
-  }
 }
 .game-board__tableau .card:not(.card__placeholder):nth-child(17) {
   top: 210%;
 }
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(17) {
-    top: 0 !important;
-    left: 300%;
-  }
-}
 .game-board__tableau .card:not(.card__placeholder):nth-child(18) {
   top: 224%;
-}
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(18) {
-    top: 0 !important;
-    left: 320%;
-  }
 }
 .game-board__tableau .card:not(.card__placeholder):nth-child(19) {
   top: 238%;
 }
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(19) {
-    top: 0 !important;
-    left: 340%;
-  }
-}
 .game-board__tableau .card:not(.card__placeholder):nth-child(20) {
   top: 252%;
-}
-@media (max-aspect-ratio: 2/3) {
-  .game-board__tableau .card:not(.card__placeholder):nth-child(20) {
-    top: 0 !important;
-    left: 360%;
-  }
 }
 
 .card {
@@ -356,16 +242,18 @@ body {
 
 button {
   height: var(--button-height);
-  min-width: 60px;
+  min-width: var(--button-height);
   border-radius: 50px;
   border: 4px solid var(--color__black);
-  padding: 12px;
   background-color: var(--color__blue300);
   color: var(--color__white);
   fill: var(--color__white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 button svg {
-  height: fit-content;
+  height: 50%;
   aspect-ratio: 1;
 }
 button:hover {
