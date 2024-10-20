@@ -1,4 +1,4 @@
-import Cards from "./Cards.js";
+import Cards from "./cards.js";
 import Card from "./card.js";
 import Loader from "./loader.js";
 
