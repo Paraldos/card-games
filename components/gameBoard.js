@@ -9,24 +9,40 @@ export default class GameBoard {
     this.waste = document.querySelector(".game-board__waste");
     this.foundation = document.querySelectorAll(".game-board__foundation");
     this.tableau = document.querySelectorAll(".game-board__tableau");
-    this.cards = new Cards().getCards();
     this.Loader = new Loader();
-    this.startGameBoard();
-    this.addPlaceholders();
-    this.fillTableus();
-    this.fillStock();
+    this.cards = null;
+    this.resetGameBoard();
     document.body.addEventListener("resetStock", () => this.resetStock());
     document.body.addEventListener("resetOverlapIndication", () =>
       this.resetOverlapIndication()
     );
   }
 
-  startGameBoard() {
+  resetGameBoard() {
+    // variables
+    this.cards = new Cards().getCards();
+    // clean up
+    this.cleanUpBoard();
+    // fill up
+    this.addPlaceholders();
+    this.fillTableus();
+    this.fillStock();
+    // loader
     this.Loader.hideLoader();
     this.gameBoard.classList.remove("hidden");
   }
 
-  // placeholders
+  cleanUpBoard() {
+    this.stock.innerHTML = "";
+    this.waste.innerHTML = "";
+    this.foundation.forEach((foundation) => {
+      foundation.innerHTML = "";
+    });
+    this.tableau.forEach((tableau) => {
+      tableau.innerHTML = "";
+    });
+  }
+
   addPlaceholders() {
     this.stock.appendChild(this.getPlaceholder());
     this.waste.appendChild(this.getPlaceholder());
@@ -44,7 +60,6 @@ export default class GameBoard {
     return card.card;
   }
 
-  // tableus
   fillTableus() {
     this.tableau.forEach((tableau, index) => {
       for (let i = 0; i < index + 1; i++) {
@@ -59,7 +74,6 @@ export default class GameBoard {
     });
   }
 
-  // stock
   fillStock() {
     this.cards.forEach((card) => {
       card.flippCard(false);

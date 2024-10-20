@@ -2,7 +2,7 @@
 import preload from "./preload.js";
 import CardOnClick from "./cardOnClick.js";
 import CardOnDrag from "./cardOnDrag.js";
-import saveFile from "./SaveFile.js";
+import saveFile from "./saveFile.js";
 
 export default class Card {
   constructor(name) {
