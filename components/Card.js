@@ -92,6 +92,7 @@ export default class Card {
   }
 
   isTableau() {
+    if (!this.card.parentNode) return false;
     return this.card.parentNode.classList.contains("game-board__tableau");
   }
 

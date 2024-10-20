@@ -25,8 +25,8 @@ export default class GameBoard {
     this.cleanUpBoard();
     // fill up
     this.addPlaceholders();
-    this.fillTableus();
     this.fillStock();
+    this.fillTableus();
     // loader
     this.Loader.hideLoader();
     this.gameBoard.classList.remove("hidden");
