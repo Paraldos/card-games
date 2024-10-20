@@ -3,11 +3,14 @@ export default class CardOnClick {
     this.parent = parent;
     this.card = parent.card;
     this.waste = document.querySelector(".game-board__waste");
-    this.drage = false;
-    this.card.addEventListener("mousedown", () => (this.drage = false));
-    this.card.addEventListener("mousemove", () => (this.drage = true));
+    this.drage = 0;
+    this.drageThreshold = 25;
+    this.card.addEventListener("mousedown", () => (this.drage = 0));
+    this.card.addEventListener("mousemove", () => {
+      this.drage += 1;
+    });
     this.card.addEventListener("mouseup", () =>
-      !this.drage ? this.onClick() : null
+      this.drage < this.drageThreshold ? this.onClick() : null
     );
   }
 
