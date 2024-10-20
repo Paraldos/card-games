@@ -36,6 +36,7 @@ export default class Card {
 
   createCard(name) {
     const card = document.createElement("div");
+    card.id = `card__${this.rank}${this.suit}`;
     card.classList.add("card");
     card.dataset.rank = this.rank;
     card.dataset.suit = this.suit;
@@ -105,12 +106,13 @@ export default class Card {
   }
 
   flippCard(faceIsUp) {
+    if (this.card.classList.contains("card__flipped") == faceIsUp) return;
+    this.card.classList.toggle("card__flipped", faceIsUp);
     const save = {
       action: "flippCard",
       card: this.card,
     };
     document.body.dispatchEvent(new CustomEvent("pushSave", { detail: save }));
-    this.card.classList.toggle("card__flipped", faceIsUp);
   }
 
   getSiblings() {

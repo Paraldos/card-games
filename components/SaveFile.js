@@ -1,29 +1,38 @@
 export default class SaveFile {
   constructor() {
-    this.saveFile = [];
-    document.body.addEventListener("resetSaveFile", () => (this.saveFile = []));
+    this.saves = [];
+    document.body.addEventListener("resetSaveFile", () => (this.saves = []));
     document.body.addEventListener("pushSave", (e) => this.push(e.detail));
     document.body.addEventListener("undo", () => this.undo());
   }
 
-  undo() {
-    const lastAction = saveFile[saveFile.length - 1];
-    console.log(lastAction);
-
-    if (lastAction.action === "move") {
-      lastAction.cards.forEach((card) => {
-        lastAction.oldPosition.appendChild(card);
-      });
-      saveFile.pop();
+  async undo() {
+    for (let i = this.saves.length - 1; i >= 0; i--) {
+      const stopLoop = this.undoLastAction(this.saves[i]);
+      if (stopLoop) break;
+      await new Promise((resolve) => setTimeout(resolve, 300));
     }
-    if (lastAction.action === "flippCard") {
-      lastAction.card.flippCard(false);
-      saveFile.pop();
+  }
+
+  undoLastAction(lastAction) {
+    switch (lastAction.action) {
+      case "move":
+        lastAction.cards.forEach((card) => {
+          lastAction.oldPosition.appendChild(card);
+        });
+        this.saves.pop();
+        return true;
+      case "flippCard":
+        lastAction.card.classList.toggle("card__flipped");
+        this.saves.pop();
+        return false;
+      default:
+        return true;
     }
   }
 
   push(save) {
-    this.saveFile.push(save);
+    this.saves.push(save);
   }
 
   pop() {}
