@@ -77,7 +77,6 @@ export default class GameBoard {
     });
   }
 
-  // helper
   resetOverlapIndication() {
     const overlapElements = document.querySelectorAll(".game-board__overlap");
     overlapElements.forEach((element) => {

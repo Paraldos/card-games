@@ -53,6 +53,7 @@ export default class CardOnClick {
   }
 
   moveNonAceCardToFoundation() {
+    if (this.parent.hasSiblingsBellow()) return;
     const foundations = document.querySelectorAll(".game-board__foundation");
     foundations.forEach((foundation) => {
       const lastCard = foundation.lastElementChild;
