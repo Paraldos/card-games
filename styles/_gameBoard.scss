@@ -5,13 +5,13 @@
   margin: 0 auto;
   width: min(100%, 900px);
   perspective: 1000px;
-  padding: 20px;
+  padding: 2%;
 
   &__card-field {
     width: 100%;
     height: fit-content;
     border: 2px solid black;
-    border-radius: 8px;
+    border-radius: 5px;
     position: relative;
   }
 
@@ -38,7 +38,7 @@
     .card:not(.card__placeholder) {
       @for $i from 1 through 20 {
         &:nth-child(#{$i}) {
-          top: #{($i - 2) * 20}px;
+          top: #{($i - 2) * 14%};
         }
       }
     }
