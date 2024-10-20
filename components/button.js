@@ -3,7 +3,7 @@ import GameBoard from "./gameBoard.js";
 export default class Button {
   constructor() {
     this.restartButton = document.querySelector(".restart-button");
-    this.undoButton = document.querySelector(".undo-button");
+    this.undoButton = document.querySelector(".button__undo");
     this.GameBoard = new GameBoard();
     this.setupRestartButton();
     this.setupUndoButton();
