@@ -2,7 +2,6 @@
 import preload from "./preload.js";
 import CardOnClick from "./cardOnClick.js";
 import CardOnDrag from "./cardOnDrag.js";
-import saveFile from "./saveFile.js";
 
 export default class Card {
   constructor(name) {
@@ -20,18 +19,19 @@ export default class Card {
   }
 
   moveCardToNewParent(newParent, save = true) {
-    var move = {
-      oldFile: this.card.parentNode,
-      newFile: newParent,
-      card: [],
+    var save = {
+      action: "move",
+      oldPosition: this.card.parentNode,
+      newPosition: newParent,
+      cards: [],
     };
     const siblings = this.getSiblings();
     const index = siblings.findIndex((element) => element === this.card);
     siblings.slice(index).forEach((card) => {
-      move.card.push(card);
+      save.cards.push(card);
       newParent.appendChild(card);
     });
-    if (save) saveFile.push(move);
+    document.body.dispatchEvent(new CustomEvent("pushSave", { detail: save }));
   }
 
   createCard(name) {
@@ -105,6 +105,11 @@ export default class Card {
   }
 
   flippCard(faceIsUp) {
+    const save = {
+      action: "flippCard",
+      card: this.card,
+    };
+    document.body.dispatchEvent(new CustomEvent("pushSave", { detail: save }));
     this.card.classList.toggle("card__flipped", faceIsUp);
   }
 

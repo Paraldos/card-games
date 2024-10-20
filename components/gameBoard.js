@@ -27,6 +27,7 @@ export default class GameBoard {
     this.addPlaceholders();
     this.fillStock();
     this.fillTableus();
+    document.body.dispatchEvent(new CustomEvent("resetSaveFile"));
     // loader
     this.Loader.hideLoader();
     this.gameBoard.classList.remove("hidden");
