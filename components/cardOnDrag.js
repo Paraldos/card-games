@@ -9,22 +9,46 @@ export default class CardOnDrag {
     this.foundations = document.querySelectorAll(".game-board__foundation");
     this.tableaus = document.querySelectorAll(".game-board__tableau");
     this.card.addEventListener("mousedown", (event) => this.onMouseDown(event));
+    this.card.addEventListener("touchstart", (event) =>
+      this.onMouseDown(event)
+    );
   }
 
   onMouseDown(event) {
     if (this.parent.isPlaceholder()) return;
     if (!this.parent.isFlipped()) return;
-    this.startX = event.clientX;
-    this.startY = event.clientY;
+
+    if (event.type === "touchstart") {
+      this.startX = event.touches[0].clientX;
+      this.startY = event.touches[0].clientY;
+    } else {
+      this.startX = event.clientX;
+      this.startY = event.clientY;
+    }
+
     this.onMouseMoveBound = this.onMouseMove.bind(this);
     this.onMouseUpBound = this.onMouseUp.bind(this);
+
     document.addEventListener("mousemove", this.onMouseMoveBound);
+    document.addEventListener("touchmove", this.onMouseMoveBound);
     document.addEventListener("mouseup", this.onMouseUpBound);
+    document.addEventListener("touchend", this.onMouseUpBound);
+
+    if (event.type === "touchstart") {
+      event.preventDefault();
+    }
   }
 
   onMouseMove(event) {
-    let newX = event.clientX - this.startX;
-    let newY = event.clientY - this.startY;
+    let newX, newY;
+    if (event.type === "touchmove") {
+      newX = event.touches[0].clientX - this.startX;
+      newY = event.touches[0].clientY - this.startY;
+    } else {
+      newX = event.clientX - this.startX;
+      newY = event.clientY - this.startY;
+    }
+
     if (this.parent.isTableau()) {
       this.affectedCards = this.getCardsBellow();
       this.affectedCards.forEach((card, index) => {
