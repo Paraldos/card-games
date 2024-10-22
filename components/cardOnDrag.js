@@ -17,6 +17,9 @@ export default class CardOnDrag {
   onMouseDown(event) {
     if (this.parent.isPlaceholder()) return;
     if (!this.parent.isFlipped()) return;
+    if (!this.card.contains(event.target)) {
+      return;
+    }
 
     if (event.type === "touchstart") {
       this.startX = event.touches[0].clientX;
@@ -164,5 +167,7 @@ export default class CardOnDrag {
   resetEventListeners() {
     document.removeEventListener("mousemove", this.onMouseMoveBound);
     document.removeEventListener("mouseup", this.onMouseUpBound);
+    document.removeEventListener("touchmove", this.onMouseMoveBound);
+    document.removeEventListener("touchend", this.onMouseUpBound);
   }
 }
