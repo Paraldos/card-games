@@ -6,10 +6,17 @@ export default class CardOnClick {
     this.drage = 0;
     this.drageThreshold = 5;
     this.card.addEventListener("mousedown", () => (this.drage = 0));
+    this.card.addEventListener("touchstart", () => (this.drage = 0));
     this.card.addEventListener("mousemove", () => {
       this.drage += 1;
     });
+    this.card.addEventListener("touchmove", () => {
+      this.drage += 1;
+    });
     this.card.addEventListener("mouseup", () =>
+      this.drage < this.drageThreshold ? this.onClick() : null
+    );
+    this.card.addEventListener("touchend", () =>
       this.drage < this.drageThreshold ? this.onClick() : null
     );
   }
